@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Splash Rush – World Tour Water Slide</title>
+<meta name="description" content="A fast 3D water-slide racing game. Slide through Singapore, Mexico, France, Thailand, Japan and Egypt.">
+<meta name="theme-color" content="#12304a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Splash Rush">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<canvas id="c3d"></canvas><canvas id="fx"></canvas>
+<div id="flash"></div>
+<div id="hud" class="hidden">
+ <div class="top">
+  <div class="chip" id="coinChip">🪙 <b id="hCoins">0</b></div>
+  <div class="rank"><span id="hRank">1</span><small id="hSuf">st</small><em>/6</em></div>
+  <button id="pauseBtn" data-act="pause">❚❚</button>
+ </div>
+ <div id="hearts"></div>
+ <div id="prog"></div>
+ <div id="pwr"></div>
+ <div id="hint">👆 Drag left &amp; right to steer</div>
+</div>
+<div id="count"></div>
+<div id="popups"></div>
+
+<div class="screen show" id="menu">
+ <div class="logo"><h1>SPLASH<br><span>RUSH</span></h1><p>World Tour Water Slide</p></div>
+ <div class="coinpill">🪙 <b class="coinTotal">0</b></div>
+ <div class="col">
+  <button class="btn big green" data-act="play">▶ PLAY</button>
+  <div class="row">
+   <button class="btn blue" data-act="levels">🌍 Countries</button>
+   <button class="btn blue" data-act="shop">🛍 Shop</button>
+   <button class="btn ghost" data-act="mute" id="muteBtn">🔊</button>
+  </div>
+  <button class="btn blue" data-act="install" id="installBtn">📲 Install app</button>
+  <div id="iosHint">📲 To install: tap <b>Share</b> then <b>Add to Home Screen</b></div>
+ </div>
+</div>
+
+<div class="screen" id="levels">
+ <div class="coinpill">🪙 <b class="coinTotal">0</b></div>
+ <div></div>
+ <div class="sheet"><h2>🌍 Choose your destination</h2><div class="grid" id="lvGrid"></div>
+  <div class="row" style="margin-top:12px"><button class="btn ghost" data-act="menu">← Back</button><button class="btn green" data-act="play">▶ GO!</button></div></div>
+</div>
+
+<div class="screen" id="shop">
+ <div class="coinpill">🪙 <b class="coinTotal">0</b></div>
+ <div></div>
+ <div class="sheet"><h2>🛍 Shop</h2>
+  <div class="tabs"><button class="btn" data-act="gB" id="gB">👦 Boy</button><button class="btn off" data-act="gG" id="gG">👧 Girl</button></div>
+  <div class="tabs"><button class="btn" data-act="tabF" id="tabF">Floaties</button><button class="btn off" data-act="tabR" id="tabR">Outfits</button><button class="btn off" data-act="tabH" id="tabH">Hair</button><button class="btn off" data-act="tabS" id="tabS">Skin</button></div>
+  <div class="grid" id="shGrid"></div>
+  <div class="row" style="margin-top:12px"><button class="btn ghost" data-act="menu">← Back</button></div></div>
+</div>
+
+<div class="screen" id="pause"><div class="modal"><h2>Paused</h2><div class="center">
+ <button class="btn green" data-act="resume">▶ Resume</button><button class="btn" data-act="retry">↻ Restart</button><button class="btn ghost" data-act="menu">Menu</button></div></div></div>
+
+<div class="screen" id="result"><div class="modal"><h2 id="rTitle">Finish!</h2><div class="stars" id="rStars"></div>
+ <p id="rRank"></p><p id="rCoins"></p><div class="center" style="margin-top:12px">
+ <button class="btn green" data-act="next" id="rNext">Next country ▶</button><button class="btn" data-act="retry">↻ Retry</button><button class="btn ghost" data-act="menu">Menu</button></div></div></div>
+<script src="lib/three.min.js"></script>
+<script src="game.js"></script>
+</body></html>
